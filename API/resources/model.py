@@ -4,8 +4,8 @@ import pickle
 
 class Hello(Resource):
     def get(self, json):
-        df = pd.read_json(json, orient="records")
+        df = pd.DataFrame(eval(json))
         model = pickle.load(open("model.sav", "rb"))
         y_pred = model.predict(df)
         df["count"] = y_pred
-        return df.to_json()
+        return df.to_json(orient="columns")

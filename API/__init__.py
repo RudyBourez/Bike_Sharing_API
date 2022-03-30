@@ -7,5 +7,3 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(Model, '/Model' ,'/Model/<string:name>')
-
-from .resources.routes import *

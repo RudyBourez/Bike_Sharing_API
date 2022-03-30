@@ -1,5 +1,5 @@
 from flask_restful import Resource
 
 class Hello(Resource):
-    def get(self):
-        return {'Task': 'Say "Hello World!"'}
+    def get(self, json):
+        return json

@@ -9,5 +9,5 @@ class Hello(Resource):
         print(df)
         model = pickle.load(open("model_stack.sav", "rb"))
         y_pred = model.predict(df)
-        df["count"] = np.exp(y_pred)-1
+        df["count"] = np.exp(y_pred) - 1
         return df.to_json(orient="columns")

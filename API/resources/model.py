@@ -5,7 +5,7 @@ import pickle
 class Hello(Resource):
     def get(self, json):
         df = pd.DataFrame(eval(json))
-        model = pickle.load(open("modele.sav", "rb"))
+        model = pickle.load(open("model.sav", "rb"))
         y_pred = model.predict(df)
         df["count"] = y_pred
         return df.to_json(orient="columns")

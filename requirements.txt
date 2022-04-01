@@ -17,3 +17,4 @@ flask-login
 xgboost
 Werkzeug==2.0.2
 azureml
+automl

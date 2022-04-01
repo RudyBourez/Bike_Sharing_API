@@ -7,4 +7,3 @@ pandas == 1.4.1
 gunicorn
 Werkzeug==2.0.2
 azureml
-automl

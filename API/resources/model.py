@@ -7,7 +7,11 @@ class Hello(Resource):
     def get(self, json):
         df = pd.DataFrame(eval(json))
         print(df)
+<<<<<<< HEAD
         model = pickle.load(open("model_lgbm_no_weather.sav", "rb"))
+=======
+        model = pickle.load(open("modele.sav", "rb"))
+>>>>>>> 957efffe69112329dfd3e66aa1673b54ed1eca6a
         y_pred = model.predict(df)
         df["count"] = np.exp(y_pred) - 1
 

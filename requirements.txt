@@ -8,3 +8,4 @@ gunicorn
 Werkzeug==2.0.2
 lightgbm
 sklearn
+xgboost

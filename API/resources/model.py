@@ -14,6 +14,9 @@ class Hello(Resource):
 
         df["count"] = np.round(np.exp(y_count) - 1)
         df["registered"] = np.round(np.exp(y_registered) - 1)
+        for i in range (len(df)):
+            if df["registered"].iloc[i] > df["count"].iloc[i]:
+                df["registered"].iloc[i] = df["count"].iloc[i]
         df["casual"] = df["count"] - df["registered"]
 
         # prediction weather

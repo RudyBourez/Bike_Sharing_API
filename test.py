@@ -71,10 +71,20 @@ df = create_df()
 # rep = eval(response.json())["count"].get(f'{0}')
 
 liste_count = []
+liste_registered = []
+liste_casual = []
 liste_weather = []
 for i in range(len(df)):
     response = requests.get(f"http://127.0.0.1:5000/{df.iloc[[i]].to_json(orient='columns')}")
     liste_count.append(eval(response.json())["count"].get(f'{i}'))
+    liste_registered.append(eval(response.json())["registered"].get(f'{i}'))
+    liste_casual.append(eval(response.json())["casual"].get(f'{i}'))
     liste_weather.append(eval(response.json())["weather"].get(f'{i}'))
 
 print("weather : ",liste_weather)
+print(100*'-')
+print("count : ",liste_count)
+print(100*'-')
+print("registered : ",liste_registered)
+print(100*'-')
+print("casual : ",liste_casual)

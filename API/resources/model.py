@@ -6,11 +6,15 @@ import pickle
 class Hello(Resource):
     def get(self, json):
         df = pd.DataFrame(eval(json))
-        print(df)
-        model = pickle.load(open("model_lgbm_no_weather.sav", "rb"))
-        model = pickle.load(open("modele.sav", "rb"))
-        y_pred = model.predict(df)
-        df["count"] = np.exp(y_pred) - 1
+        model_count = pickle.load(open("model_stacking_count.sav", "rb"))
+        model_registered = pickle.load(open("model_stacking_registered.sav", "rb"))
+
+        y_count = model_count.predict(df)
+        y_registered = model_registered.predict(df)
+
+        df["count"] = np.round(np.exp(y_count) - 1)
+        df["registered"] = np.round(np.exp(y_registered) - 1)
+        df["casual"] = df["count"] - df["registered"]
 
         # prediction weather
         model_weather = pickle.load(open("model_cluster_weather.sav","rb"))
